@@ -18,7 +18,7 @@ if (!isset($_SESSION['id'])) {
 
     </div>
 
-    <div class="col-md-8 col-sm-12 col-lg-8">
+    <div class="col-md-8 col-sm-12 col-lg-8" style="background-color: #fff;">
     <h1>
     
 
@@ -28,13 +28,13 @@ if (!isset($_SESSION['id'])) {
 
         <div class="row" >
 
-            <div class="col-md-4" >
+            <div class="col-md-5" >
                 <div  id="cart-table" >
                 </div>
             </div>
 
 
-            <div class="col-md-8" >
+            <div class="col-md-7" >
             
                             <div class="card">
                 <header class="card-header">

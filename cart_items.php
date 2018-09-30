@@ -27,6 +27,7 @@
                     $sql="SELECT * FROM cart where username='$username'";
                     $result=mysqli_query($conn,$sql);
                     
+                    if($result){
                     $count = 1;
                     while($row = mysqli_fetch_assoc($result)) {
         
@@ -54,6 +55,7 @@
                   <?php 
                   $count=$count+1;
               }
+            }
             }
   
 

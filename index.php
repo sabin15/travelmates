@@ -77,24 +77,24 @@ if(isset($_SESSION['id']))
                   </ol>
                   <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('https://wallpaper-house.com/data/out/9/wallpaper2you_359471.jpg')">
+                    <div class="carousel-item active" style="background-image: url('https://content.statuecruises.com/sites/default/files/styles/hero_huge/public/images/hero/carousel/Statue%20Cruises%20-%20Statue%20of%20Liberty%20History%20-%20Aerial%20of%20Lady%20Liberty%20%26%20Manhattan%20at%20Dusk%281%29.jpg')">
                       <div class="carousel-caption d-none d-md-block">
-                        <h3>First Slide</h3>
-                        <p>This is a description for the first slide.</p>
+                        <h3>Send Money to USA</h3>
+                        <p>Get USD from our shops.</p>
                       </div>
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://wallpaper-house.com/data/out/9/wallpaper2you_359448.jpg')">
+                    <div class="carousel-item" style="background-image: url('https://images.spot.im/v1/production/obx262agf9mbbwrl1lde')">
                       <div class="carousel-caption d-none d-md-block">
-                        <h3>Second Slide</h3>
-                        <p>This is a description for the second slide.</p>
+                        <h3>Buy GBP</h3>
+                        
                       </div>
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://wallpaper-house.com/data/out/9/wallpaper2you_359456.jpg')">
+                    <div class="carousel-item" style="background-image: url('https://axcessnews.com/wp-content/uploads/2017/12/forex-trading-560x416.jpg')">
                       <div class="carousel-caption d-none d-md-block">
-                        <h3>Third Slide</h3>
-                        <p>This is a description for the third slide.</p>
+                        <h3>Buy and Sell Currencires with Travelmate.</h3>
+                        <p>Travelmate helps you to buy and sell currency across different domains and country.</p>
                       </div>
                     </div>
                   </div>
@@ -111,77 +111,55 @@ if(isset($_SESSION['id']))
 
           <div class="col-lg-4">
               <!-- TABLE HEAD INVERSE -->
+
+            <div class="bg-success">
+                    <center><strong class="text-light">Exchange rates for today.</strong> </center>
+              </div>
+            
+
+            <br>
             <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
+                        <th>Currency</th>
+                        <th>Sold At</th>
+                        <th>Purchased At</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>jdoe@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Will</td>
-                        <td>Johnson</td>
-                        <td>will@yahoo.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Shannon</td>
-                        <td>Williams</td>
-                        <td>shannon@yahoo.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>jdoe@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Will</td>
-                        <td>Johnson</td>
-                        <td>will@yahoo.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>Shannon</td>
-                        <td>Williams</td>
-                        <td>shannon@yahoo.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>jdoe@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">8</th>
-                        <td>Will</td>
-                        <td>Johnson</td>
-                        <td>will@yahoo.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>Shannon</td>
-                        <td>Williams</td>
-                        <td>shannon@yahoo.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">10</th>
-                        <td>Shannon</td>
-                        <td>Williams</td>
-                        <td>shannon@yahoo.com</td>
-                    </tr>
-                </tbody>
+            <?php
+                include './controller/connection.php';
+
+
+            $sql="SELECT currency,flag_url, cast(AVG(purchase_rate) as decimal(10,2)) as purchase_rate,  cast(AVG(selling_rate) as decimal(10,2)) as selling_rate FROM `exchange_rates` GROUP BY currency";
+            // $sql="SELECT * FROM exchange_rates where branch='$branch_id'";
+            $result=mysqli_query($conn,$sql);
+            
+            $count = 1;
+            while($row = mysqli_fetch_assoc($result)) {
+
+                ?>
+
+
+                <tr class="table-light">     
+                    <td><img src="<?php echo $row['flag_url'] ?>" width='16px' height='16px' /> </td>
+                    <td><?php echo  $row["currency"]?></td>
+                    <td><?php echo  $row["selling_rate"]?></td>
+                    <td><?php echo  $row["purchase_rate"]?></td>
+                                   
+                
+                </tr>
+
+
+                <?php 
+                $count=$count+1;
+            }
+
+           
+            ?>
+            
+        </tbody>
               </table>
       
           </div>

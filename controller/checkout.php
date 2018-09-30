@@ -47,8 +47,11 @@
 								$username=$_SESSION['id'];
 								$data="SELECT * from cart where username='$username';";
 								$result=mysqli_query($conn,$data);
-								if(!$result)
+								if(mysqli_num_rows($result)==0)
+								{
+									echo "Empty Cart";
 									return;
+								}
 
 								while($row = mysqli_fetch_assoc($result))
 								{
