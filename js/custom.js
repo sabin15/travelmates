@@ -436,7 +436,7 @@ $(function() {
                 data: data,
                 resize: true
             });
-            console.log(data);
+            //console.log(data);
 
          }
     });
@@ -457,7 +457,7 @@ $(function() {
                      'worth':parseInt(array[i].worth)
 
                  });
-                 
+                 console.log(data);
                 //  data[i]['currency']=array[i].currency;
                 //  data[i]['sales']=parseInt(array[i].total_sales);
 
@@ -502,7 +502,7 @@ $(function() {
                 data: data,
                 resize: true
             });
-            console.log(data);
+            //console.log(data);
 
          }
     });
