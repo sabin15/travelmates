@@ -15,7 +15,7 @@
 		
 		
 		if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
-			$allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+			$allowed = array("jpg" => "image/jpg","JPG" => "image/JPG", "jpeg" => "image/jpeg","JPEG" => "image/JPEG", "png" => "image/png", "PNG" => "image/PNG");
 			$filename = $_FILES["photo"]["name"];
 			$filetype = $_FILES["photo"]["type"];
 			$filesize = $_FILES["photo"]["size"];

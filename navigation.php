@@ -134,7 +134,7 @@
                                 <a href="add_currency.php">Add Currency</a>
                             </li>
                             <li>
-                                <a href="inventory_manage.php">Manage</a>
+                                <a href="admin-inventory.php">Manage</a>
                             </li>
                             
                         </ul>
@@ -142,7 +142,17 @@
 
                     <!-- Transaction -->
                     <li>
-                        <a href="#" class="<?php if ($selected == 'transaction') echo 'active'; ?>"><i class="fa fa-dollar fa-fw"></i> Transactions</a>
+                        <a href="#" class="<?php if ($selected == 'transaction') echo 'active'; ?>"><i class="fa fa-dollar fa-fw"></i> Transactions<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="b2c_transaction_admin.php">Branch-Customer Transaction</a>
+                            </li>
+                            <li>
+                                <a href="b2b_transaction_admin.php">Branch-Branch Transaction</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
                         
                     </li>
 
@@ -172,24 +182,54 @@
     
 
     <script>
+        // function select_branch($branch_name){
+            
+        //     document.cookie = "branch_selected" + "=" + $branch_name ;
+        //     $.ajax({
+
+        //         type: "POST",
+        //         url: "./controller/check_currency_balance.php",
+        //         async: false,
+        //         data: {branch:$branch_name},
+        //         success : function(response)
+        //         {
+        //             if(response){
+        //                 //alert(response);
+        //                 console.log(response);
+        //                 //setCookie('total',response);
+        //                 document.getElementById("max_transfer_amount").innerHTML="maximum transferable amount = "+ response;
+        //                 document.getElementById("transfer_amount_in").setAttribute("max",response);
+        //                 document.getElementById("max_transfer_amount").style.color="green";
+                        
+                        
+        //             }
+        //             else{
+        //                 console.log("no any response");
+        //             }
+        //         }
+        //     });
+            
+        //     location.reload();
+
+        // }
+
+
+
         function select_branch($branch_name){
             
             document.cookie = "branch_selected" + "=" + $branch_name ;
             $.ajax({
 
                 type: "POST",
-                url: "./controller/check_currency_balance.php",
+                url: "./controller/get_branch_id.php",
                 async: false,
-                data: {branch:$branch_name},
+                data: {branch_name:$branch_name},
                 success : function(response)
                 {
                     if(response){
                         //alert(response);
                         console.log(response);
-                        //setCookie('total',response);
-                        document.getElementById("max_transfer_amount").innerHTML="maximum transferable amount = "+ response;
-                        document.getElementById("transfer_amount_in").setAttribute("max",response);
-                        document.getElementById("max_transfer_amount").style.color="green";
+                        setCookie('current_branch_id',response);
                         
                         
                     }
