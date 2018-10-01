@@ -184,7 +184,7 @@
                 success : function(response)
                 {
                     if(response){
-                        alert(response);
+                        //alert(response);
                         console.log(response);
                         //setCookie('total',response);
                         document.getElementById("max_transfer_amount").innerHTML="maximum transferable amount = "+ response;

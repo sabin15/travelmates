@@ -24,6 +24,7 @@
 
     <!-- Morris Charts CSS -->
     <link href="css/morris.css" rel="stylesheet">
+    <link href="css/ekko-lightbox.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,6 +55,7 @@
 <script src="js/custom.js"></script>
 <script src="js/morris.min.js"></script>
 <script src="js/raphael.min.js"></script>
+<script src="js/ekko-lightbox.js"></script>
 <!-- <script src="js/morris-data.js"></script> -->
 
 

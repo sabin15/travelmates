@@ -32,16 +32,18 @@
 					} 
 					else{
 						
-
-							$sql="INSERT INTO transaction (customer_name, bank_name, contact, voucher_image, email) VALUES ('$name', '$bank_name', '$contact', '$filename','$email');";
+							$random=md5(uniqid($_FILES["voucher"]["name"], true));
+							$ext = end((explode(".", $_FILES["voucher"]["name"])));
+							$file_name = preg_replace('~[\/{}.*^:*?"<>|.]~', '', $random).'.'.$ext;
+							
+							$sql="INSERT INTO transaction (customer_name, bank_name, contact, voucher_image, email) VALUES ('$name', '$bank_name', '$contact', '$file_name','$email');";
 							$result=mysqli_query($conn,$sql);
 							
 							if($result){
-								$random=md5(uniqid($_FILES["voucher"]["name"], true));
-								$file_name = preg_replace('~[\/{}.*^:*?"<>|.]~', '', $random);
-								$ext = end((explode(".", $_FILES["voucher"]["name"])));
+								
+								
 		
-								move_uploaded_file($_FILES["voucher"]["tmp_name"], "../upload/".$file_name.'.'.$ext );
+								move_uploaded_file($_FILES["voucher"]["tmp_name"], "../upload/".$file_name );
 								
 								$transaction_id=mysqli_insert_id($conn);
 								

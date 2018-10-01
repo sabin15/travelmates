@@ -24,6 +24,11 @@
 function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue ;
 }
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
 
 var branchID;
 function remove_branch($branchID){
@@ -410,6 +415,29 @@ function calculate_total($purpose){
 // });
 
 $(function() {
+    $branchName=getCookie('branch_selected');
+
+    $.ajax({
+
+        type: "POST",
+         url: "./controller/get_branch_id.php",
+         async: false,
+         data: {branch_name:$branchName},
+         success : function(response)
+         {
+             if(response){
+                
+                console.log(response);
+                setCookie('current_branch_id',parseInt(response));
+                                 
+                 
+            }
+            else{
+                console.log("no any response");
+            }
+        }
+    }); 
+
     $.ajax({
 
         type: "GET",
@@ -511,8 +539,18 @@ $(function() {
 
 
 
-function approve_transaction($tid){
-    alert($tid);
+function load_remit(){
+    alert(aa);
+    
+    document.getElementById("remit-area").innerHTML="got it";
+    $("#remit-area").load("remit-staff.php");
 
 }
+
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+});
+
+
 

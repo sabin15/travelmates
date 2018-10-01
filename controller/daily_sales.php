@@ -1,7 +1,8 @@
 <?php
         include 'connection.php';
+        $branch=$_COOKIE['current_branch_id'];
 
-        $sql="SELECT SUM(CASE WHEN selling_rate IS NOT NULL then forex_amount ELSE 0 END) AS total_sold,currency,COUNT(CASE WHEN selling_rate IS NOT NULL THEN 1 ELSE NULL END) AS transaction_frequency FROM b2c_transaction WHERE branch=16 AND DATE(timestamp) = CURRENT_DATE GROUP BY currency ORDER BY currency;";
+        $sql="SELECT SUM(CASE WHEN selling_rate IS NOT NULL then forex_amount ELSE 0 END) AS total_sold,currency,COUNT(CASE WHEN selling_rate IS NOT NULL THEN 1 ELSE NULL END) AS transaction_frequency FROM b2c_transaction WHERE branch=$branch AND DATE(timestamp) = CURRENT_DATE GROUP BY currency ORDER BY currency;";
         $result=mysqli_query($conn,$sql);
         $dbdata = array();
         if($result){

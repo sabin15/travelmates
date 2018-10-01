@@ -17,6 +17,9 @@
                                         <th>Customer</th>
                                         <th>Phone</th>
                                         <th>Timestamp</th>
+                                        <th>Bank Name</th>
+                                        <th>Voucher Image</th>
+                                        
                                         
                                         
 
@@ -70,7 +73,11 @@
                                                 <td><?php echo  $row["customer_name"]?></td>
                                                 <td><?php echo  $row["phone"]?></td>
                                                 <td><?php echo  $row["timestamp"]?></td>
-                                                <td><a onclick="alert('Hey dude')" id="<?php echo $row['id'] ?>" class="trn<?php echo $row['tid'] ?>"><i class="fa fa-check fa-fw"></i>Approve</a></td>
+
+                                                <td><?php echo  $row["bank_name"]?></td>
+                                                <td><a href="upload/<?php echo  $row['voucher_image']?>" data-toggle="lightbox" data-title="A random title" data-footer="A custom footer text"><img class="img-fluid inventory_staff_img" height="50px" width="50px" src="upload/<?php echo  $row['voucher_image']?>"></a></td>
+
+                                                
                                                 
                                                 
 

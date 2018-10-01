@@ -64,7 +64,7 @@ include 'header.php';
                                             <td><?php echo  $row["total"]?></td>
                                             <td><?php echo  $row["commission"]?></td>
                                             <td><?php echo  $row["bname"]?></td>
-                                            <td><img class="inventory_staff_img" height="50px" width="50px" src="upload/<?php echo  $row['image']?>"></td>
+                                            <td><a href="upload/<?php echo  $row['image']?>" data-toggle="lightbox" data-title="A random title" data-footer="A custom footer text"><img class="img-fluid inventory_staff_img" height="50px" width="50px" src="upload/<?php echo  $row['image']?>"></a></td>
                                             
 
                                         </tr>
@@ -88,6 +88,27 @@ include 'header.php';
 
 
 <?php include 'footer.php';?>
+<script>
+    $(document).ready(function ($) {
+                // delegate calls to data-toggle="lightbox"
+                $(document).on('click', '[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', function(event) {
+                    event.preventDefault();
+                    return $(this).ekkoLightbox({
+                        onShown: function() {
+                            if (window.console) {
+                                return console.log('Checking our the events huh?');
+                            }
+                        },
+						onNavigate: function(direction, itemIndex) {
+                            if (window.console) {
+                                return console.log('Navigating '+direction+'. Current item: '+itemIndex);
+                            }
+						}
+                    });
+                });
+
+            
+</script>
 
 
 

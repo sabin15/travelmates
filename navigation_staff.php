@@ -148,7 +148,7 @@
                     </li>
 
                      <li>
-                        <a href="#" class="<?php if ($selected == 'remittance') echo 'active'; ?>"><i class="fa fa-dollar fa-fw"></i> Remittance</a>
+                        <a href="remit-staff.php" class="<?php if ($selected == 'remittance') echo 'active'; ?>" ><i class="fa fa-dollar fa-fw"></i> Remittance</a>
                         
                     </li>
 
