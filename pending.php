@@ -58,7 +58,7 @@
                                     while($row = mysqli_fetch_assoc($result)) {
                                         $lastline=$row;
                                         $total+=$row['total'];
-                                        echo $row['id'];
+                                        //echo $row['id'];
 
                                     ?>
                                         <tr class="<?php if($row['selling_rate']==NULL) echo 'success'; else echo 'info';?>">

@@ -22,14 +22,12 @@
                                         <th>Received</th>
                                         <th>Customer_Name</th>
                                         <th>phone</th>
-                                        <th>branch</th>
+                                        
 
 
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    
-';
+                                <tbody>';
 
                                         
      
@@ -70,7 +68,7 @@
                         <td>'. $row['received'].'</td>
                         <td>'. $row['customer_name'].'</td>
                         <td>'.$row['phone'].'</td>
-                        <td>'. $_COOKIE['branch_selected'].'</td>             
+                        
                         
 
                     </tr>';
@@ -87,7 +85,7 @@
         echo "Success";
             
             include 'send_mail.php';
-            $msg="Transaction verified ";
+            //$msg="Transaction verified ";
             $mail->Body = $msg;
 
             if ($mail->send()){
