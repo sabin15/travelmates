@@ -34,7 +34,7 @@
 				// Verify MYME type of the file
 				if(in_array($filetype, $allowed)){
 					// Check whether file exists before uploading it
-					if(file_exists("../upload/" . $_FILES["identity"]["name"])){
+					if(0){
                      
 					} 
 					else{

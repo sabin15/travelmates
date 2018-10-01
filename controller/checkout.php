@@ -27,25 +27,28 @@
 				// Verify MYME type of the file
 				if(in_array($filetype, $allowed)){
 					// Check whether file exists before uploading it
-					if(file_exists("../upload/" . $_FILES["voucher"]["name"])){
-						echo $_FILES["voucher"]["name"] . " is already exists.";
+					if(0){
+						
 					} 
 					else{
 						
-							
 
 							$sql="INSERT INTO transaction (customer_name, bank_name, contact, voucher_image, email) VALUES ('$name', '$bank_name', '$contact', '$filename','$email');";
 							$result=mysqli_query($conn,$sql);
 							
 							if($result){
-								move_uploaded_file($_FILES["voucher"]["tmp_name"], "../upload/" . $_FILES["voucher"]["name"]);
+								$random=md5(uniqid($_FILES["voucher"]["name"], true));
+								$file_name = preg_replace('~[\/{}.*^:*?"<>|.]~', '', $random);
+								$ext = end((explode(".", $_FILES["voucher"]["name"])));
+		
+								move_uploaded_file($_FILES["voucher"]["tmp_name"], "../upload/".$file_name.'.'.$ext );
 								
 								$transaction_id=mysqli_insert_id($conn);
 								
 								session_start();
 
 								$username=$_SESSION['id'];
-								$data="SELECT * from cart where username='$username';";
+								$data="SELECT * from cart where username='$username'";
 								$result=mysqli_query($conn,$data);
 								if(mysqli_num_rows($result)==0)
 								{
@@ -67,21 +70,15 @@
 									$id=$row['id'];
 									
 									
+									
 									$sql="Insert into b2c_transaction (currency, commission, selling_rate, forex_amount, total, received, customer_name, phone, status, branch, transaction_id) 
 															  values ('$currency','$commission','$selling_rate','$forex_amount','$total','$total','$customer_name', '$phone','$status','$branch', '$transaction_id')";
 									$res=mysqli_query($conn,$sql);
 									if($res){
 										$sql="DELETE FROM cart where id='$id';";
-										$result=mysqli_query($conn,$sql);
+										$deleted=mysqli_query($conn,$sql);
 									}
 								}
-
-
-								
-								
-								
-								$sql="DELETE FROM cart where username='$username';";
-								$result=mysqli_query($conn,$sql);
 
 								echo '<script> alert("Success Dabase Insertion ! Your file was uploaded successfully.")</script>;';
 

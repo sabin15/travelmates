@@ -26,6 +26,7 @@
         
         <?php if(!isset($_SESSION['id'])) {?>
          <?php }   else {?>
+          <li><a href="remit.php">Send Remit</a></li> 
           <li><a href="checkout.php">Checkout</a></li> 
           <li><a href="logout.php">Logout</a></li> 
         <li><a href="profile.php" class='fa fa-gear'></a></li> 
