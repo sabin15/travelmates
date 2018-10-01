@@ -510,3 +510,10 @@ $(function() {
     
 });
 
+
+
+function approve_transaction($tid){
+    alert($tid);
+
+}
+

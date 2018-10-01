@@ -175,6 +175,30 @@
         function select_branch($branch_name){
             
             document.cookie = "branch_selected" + "=" + $branch_name ;
+            $.ajax({
+
+                type: "POST",
+                url: "./controller/check_currency_balance.php",
+                async: false,
+                data: {branch:$branch_name},
+                success : function(response)
+                {
+                    if(response){
+                        alert(response);
+                        console.log(response);
+                        //setCookie('total',response);
+                        document.getElementById("max_transfer_amount").innerHTML="maximum transferable amount = "+ response;
+                        document.getElementById("transfer_amount_in").setAttribute("max",response);
+                        document.getElementById("max_transfer_amount").style.color="green";
+                        
+                        
+                    }
+                    else{
+                        console.log("no any response");
+                    }
+                }
+            });
+            
             location.reload();
 
         }
